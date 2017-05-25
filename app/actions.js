@@ -20,8 +20,18 @@ export const VisibilityFilters = {
  * action creators
  */
 
+// export function addTodo(text) {
+//   return { type: ADD_TODO, text }
+// }
+
 export function addTodo(text) {
-  return { type: ADD_TODO, text }
+  return function (dispatch, getState, ...others) {
+    if(getState().todos.length === 3) {
+      return;
+    }
+    console.log(others);
+    dispatch({ type: ADD_TODO, text });
+  }
 }
 
 export function toggleTodo(index) {
