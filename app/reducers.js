@@ -1,4 +1,5 @@
-import { combineReducers } from 'redux'
+import { Record } from 'immutable'
+import { combineReducers } from 'redux-immutable'
 import { ADD_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER, VisibilityFilters } from './actions'
 const { SHOW_ALL } = VisibilityFilters
 
@@ -37,9 +38,14 @@ function todos(state = [], action) {
   }
 }
 
+const StateRecord = Record({
+  visibilityFilter: void 0,
+   todos: void 0
+});
+
 const todoApp = combineReducers({
   visibilityFilter,
   todos
-})
+}, StateRecord);
 
-export default todoApp
+export default todoApp;
